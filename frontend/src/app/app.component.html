@@ -1,0 +1,72 @@
+<!-- Image and text -->
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    Bootstrap
+  </a>
+</nav>
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">CRUD - PROVEEDORES</h1>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-4 my-1">
+          <form>
+            <div class="form-group">
+              <label for="exampleInputEmail1">NOMBRES</label>
+              <input type="text" class="form-control" name="nombres" [(ngModel)]="proveedor.nombres">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">APELLIDOS</label>
+              <input type="text" class="form-control" name="apellidos" [(ngModel)]="proveedor.apellidos">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">DNI</label>
+              <input type="text" class="form-control" name="dni" [(ngModel)]="proveedor.dni">
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlFile1">FOTO</label>
+              <input type="file" class="form-control-file" name="foto">
+            </div>
+            <button class="btn btn-primary" (click)="postProveedor()" *ngIf="!update">GUARDAR</button>
+            <button class="btn btn-primary" (click)="putProveedor()" *ngIf="update">ACTUALIZAR</button>
+            <button class="btn btn-danger mx-1" (click)="cancel()" *ngIf="update">CANCELAR</button>
+          </form>
+          <pre>{{proveedor | json}}</pre>
+        </div>
+        <div class="col-md-8 my-1">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">NOMBRES</th>
+                <th scope="col">APELLIDOS</th>
+                <th scope="col">DNI</th>
+                <th scope="col">FOTO</th>
+                <th scope="col">OPCIONES</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let proveedor of proveedores; let i = index;">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ proveedor.nombres }}</td>
+                <td>{{ proveedor.apellidos }}</td>
+                <td>{{ proveedor.dni }}</td>
+                <td>@mdo</td>
+                <th>
+                  <button class="btn btn-danger mx-1 my-1" (click)="deleteProveedor(proveedor._id)"><i class="fa fa-trash"></i></button>
+                  <button class="btn btn-info mx-1 my-1" (click)="updateProveedor(proveedor)"><i class="fa fa-edit"></i></button>
+                </th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
