@@ -31,13 +31,16 @@
             </div>
             <div class="form-group">
               <label for="exampleFormControlFile1">FOTO</label>
-              <input type="file" class="form-control-file" name="foto">
+              <input type="file" class="form-control-file" name="foto" (change)="selectFoto($event)">
+              <div class="progress my-1">
+                <div class="progress-bar" role="progressbar" [ngStyle]="{'width.%': progress}" aria-valuemin="0"
+                  aria-valuemax="100"></div>
+              </div>
             </div>
-            <button class="btn btn-primary" (click)="postProveedor()" *ngIf="!update">GUARDAR</button>
+            <button class="btn btn-primary" (click)="postProveedor()" *ngIf="!update">AGREGAR</button>
             <button class="btn btn-primary" (click)="putProveedor()" *ngIf="update">ACTUALIZAR</button>
             <button class="btn btn-danger mx-1" (click)="cancel()" *ngIf="update">CANCELAR</button>
           </form>
-          <pre>{{proveedor | json}}</pre>
         </div>
         <div class="col-md-8 my-1">
           <table class="table">
@@ -57,10 +60,14 @@
                 <td>{{ proveedor.nombres }}</td>
                 <td>{{ proveedor.apellidos }}</td>
                 <td>{{ proveedor.dni }}</td>
-                <td>@mdo</td>
+                <td>
+                  <img [src]="proveedor.foto" style="width: 75px; height: 75px;">
+                </td>
                 <th>
-                  <button class="btn btn-danger mx-1 my-1" (click)="deleteProveedor(proveedor._id)"><i class="fa fa-trash"></i></button>
-                  <button class="btn btn-info mx-1 my-1" (click)="updateProveedor(proveedor)"><i class="fa fa-edit"></i></button>
+                  <button class="btn btn-danger mx-1 my-1" (click)="deleteProveedor(proveedor._id)"><i
+                      class="fa fa-trash"></i></button>
+                  <button class="btn btn-info mx-1 my-1" (click)="updateProveedor(proveedor)"><i
+                      class="fa fa-edit"></i></button>
                 </th>
               </tr>
             </tbody>
