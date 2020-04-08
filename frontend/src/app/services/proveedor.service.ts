@@ -6,7 +6,8 @@ import { Proveedor } from '../models/proveedor.model';
   providedIn: 'root'
 })
 export class ProveedorService {
-  urlApi = 'http://localhost:3000';
+  // urlApi = 'http://localhost:3000';
+  urlApi = 'https://softwareperu.herokuapp.com';
 
   constructor(private http: HttpClient) { }
 
